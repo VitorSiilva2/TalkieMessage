@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "724789003952",
+    "project_id": "projectchat-e949a",
+    "storage_bucket": "projectchat-e949a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724789003952:android:87845ea38ca837079c5d75",
+        "android_client_info": {
+          "package_name": "com.example.talkiemessage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724789003952-l74abekahe9rdb72hbsuaa2s4n6eh03i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHHyTGak5fNppUML-DOlsuIxR7PO_YUy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724789003952-l74abekahe9rdb72hbsuaa2s4n6eh03i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

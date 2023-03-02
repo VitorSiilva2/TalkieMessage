@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TalkieMessage</string>
+    <string name="user">Usuario</string>
+    <string name="password">Senha</string>
+    <string name="title_activity_admin_screen">AdminScreen</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="welcome">Olá, %s !</string>
+    <string name="send">Enviar</string>
+    <string name="enter">Entrar</string>
+    <string name="confirmReading">Confirma leitura</string>
+    <string name="register">Cadastrar</string>
+    <string name="name">Nome</string>
+
+</resources>
