@@ -15,5 +15,6 @@
     <string name="confirmReading">Confirma leitura</string>
     <string name="register">Cadastrar</string>
     <string name="name">Nome</string>
+    <string name="singout">Sair</string>
 
 </resources>
