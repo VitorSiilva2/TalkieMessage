@@ -3,54 +3,63 @@ package com.example.talkiemessage
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.HapticFeedbackConstants
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.talkiemessage.databinding.ActivityMainBinding
+import com.example.talkiemessage.databinding.ActivityRegisterBinding
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var editLogin : EditText
-    private lateinit var editName : EditText
-    private lateinit var editPassword : EditText
-    private lateinit var buttonRegisterActivity : Button
+    private lateinit var binding : ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val auth = FirebaseAuth.getInstance()
 
-        buttonRegisterActivity = findViewById(R.id.register_btn_enter_register)
-        editLogin = findViewById(R.id.nickname_edit_input_register)
-        editName = findViewById(R.id.name_edit_input_register)
-        editPassword = findViewById(R.id.password_edit_input_register)
-
-        buttonRegisterActivity.setOnClickListener {
-            val email = editLogin.text.toString()
-            val password = editPassword.text.toString()
-            val name = editName.text.toString()
+            binding.registerBtnEnter.setOnClickListener {
+            val email = binding.nicknameEditInputRegister.text.toString()
+            val password = binding.passwordEditInputRegister.text.toString()
+            val name = binding.nameEditInputRegister.text.toString()
+            val isAdmin = binding.isadminValidation.text.toString()
 
             if (password.isEmpty() || name.isEmpty() || email.isEmpty()) {
                 Toast.makeText(this, "Complete o formulario!", Toast.LENGTH_SHORT).show()
          } else {
              auth.createUserWithEmailAndPassword(email, password)
-                 .addOnCompleteListener { cadastro ->
-                     if (cadastro.isSuccessful) {
-                         Toast.makeText(this, "Usuario cadastrado com sucesso!", Toast.LENGTH_SHORT)
-                             .show()
-                         editLogin.setText("")
-                         editName.setText("")
-                         editPassword.setText("")
-                         val user = FirebaseAuth.getInstance().currentUser
-
+                 .addOnSuccessListener { cadastro ->
+                         val uid = cadastro.user?.uid
+                     if (uid == null) {
+                         Toast.makeText(this, "Erro interno no servidor", Toast.LENGTH_SHORT).show()
                      } else {
-                         val message = cadastro.exception?.message
-                         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+                         FirebaseFirestore.getInstance()
+                             .collection("/users")
+                             .document(uid)
+                             .set(
+                                 hashMapOf(
+                                     "name" to name,
+                                     "email" to email,
+                                     "uuid" to uid,
+                                     "isAdmin" to isAdmin,
+                                 )
+                             )
+
+                         binding.passwordEditInputRegister.setText("")
+                         binding.nicknameEditInputRegister.setText("")
+                         binding.nameEditInputRegister.setText("")
+                         binding.isadminValidation.setText("")
+
 
                      }
                  }.addOnFailureListener { exception ->
@@ -60,6 +69,9 @@ class RegisterActivity : AppCompatActivity() {
                          else -> "Erro ao cadastrar usuario"
                      }
                      Toast.makeText(this, messageError, Toast.LENGTH_SHORT).show()
+                 }
+                 .addOnCompleteListener {
+                     Toast.makeText(this, "Conta criando com succeso!", Toast.LENGTH_SHORT).show()
                  }
          }
 

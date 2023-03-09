@@ -61,8 +61,21 @@
 
         </EditText>
 
+        <EditText
+            android:id="@+id/isadmin_validation"
+            android:layout_width="match_parent"
+            android:padding="16dp"
+            android:hint="admin"
+            android:layout_height="60dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/edit_text_background">
+
+        </EditText>
+
         <Button
-            android:id="@+id/register_btn_enter_register"
+            android:id="@+id/register_btn_enter"
             android:text="@string/register"
             android:layout_width="match_parent"
             android:layout_height="60dp"
