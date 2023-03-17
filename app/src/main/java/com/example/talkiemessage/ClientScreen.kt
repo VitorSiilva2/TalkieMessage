@@ -1,11 +1,15 @@
 package com.example.talkiemessage
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
-import android.os.Message
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import com.example.talkiemessage.databinding.ActivityClientScreenBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
@@ -21,7 +25,7 @@ class ClientScreen : AppCompatActivity() {
         constructor() : this("")
     }
 
-    private lateinit var binding : ActivityClientScreenBinding
+    private lateinit var binding: ActivityClientScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +58,7 @@ class ClientScreen : AppCompatActivity() {
 
         binding.singinBtnLogoff.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
-            val backToLogin = Intent(this, MainActivity::class.java)
+            val backToLogin = Intent(this, LoginActivity::class.java)
             startActivity(backToLogin)
 
         }
@@ -86,18 +90,37 @@ class ClientScreen : AppCompatActivity() {
             messagesRef.addSnapshotListener(messagesListener)
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelId = "my_channel_id"
+            val channel = NotificationChannel(channelId, "My Channel", NotificationManager.IMPORTANCE_HIGH)
+            val notificationManager = getSystemService(NotificationManager::class.java)
+            notificationManager.createNotificationChannel(channel)
+
+        }
     }
 
     private fun updateUI(messages: List<Message>) {
         // Encontre a TextView na UI onde as mensagens serão exibidas
         val receivedText = binding.receivedText
-
         // Recupere a última mensagem da lista de mensagens
         val lastMessage = messages.lastOrNull()
+
 
         // Se a última mensagem existir, exiba-a na UI
         if (lastMessage != null) {
             receivedText.text = lastMessage.message
+
+            val notification = NotificationCompat.Builder(this, "my_channel_id")
+                .setContentTitle("Nova mensagem! ")
+                .setContentText(lastMessage.message)
+                .setSmallIcon(R.drawable.email_message_messagesent_icon)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setAutoCancel(true)
+                .build()
+
+            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.notify(1, notification)
+
         }
     }
 }

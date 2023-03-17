@@ -82,7 +82,7 @@ class AdminScreen : AppCompatActivity() {
         // Define o evento de clique do botão de sair
         binding.singinBtnLogoff.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
-            val backToLogin = Intent(this, MainActivity::class.java)
+            val backToLogin = Intent(this, LoginActivity::class.java)
             startActivity(backToLogin)
         }
     }

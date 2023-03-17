@@ -6,19 +6,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.talkiemessage.databinding.ActivityMainBinding
+import com.example.talkiemessage.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding : ActivityLoginBinding
     private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.loginBtnEnter.setOnClickListener{
@@ -27,16 +27,16 @@ class MainActivity : AppCompatActivity() {
 
             if (validate()) {
                 Toast.makeText(this, "Preencha os campos", Toast.LENGTH_SHORT).show()
-        } else {
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { authentication ->
-                if(authentication.isSuccessful) {
-                    mainScreen()
+            } else {
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { authentication ->
+                    if(authentication.isSuccessful) {
+                        mainScreen()
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                 }
-            }.addOnFailureListener {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-            }
 
-        }
+            }
 
         }
 
@@ -64,12 +64,12 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     if (document != null && document.exists() && document.getBoolean("isAdmin") == true) {
                         // O usuário é um admin, vá para a atividade de admin
-                        val intent = Intent(this@MainActivity, AdminScreen::class.java)
+                        val intent = Intent(this@LoginActivity, AdminScreen::class.java)
                         startActivity(intent)
                         finish()
                     } else {
                         // O usuário não é um admin, vá para a atividade de usuário normal
-                        val intent = Intent(this@MainActivity, ClientScreen::class.java)
+                        val intent = Intent(this@LoginActivity, ClientScreen::class.java)
                         startActivity(intent)
                         finish()
                     }

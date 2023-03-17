@@ -17,4 +17,9 @@
     <string name="name">Nome</string>
     <string name="singout">Sair</string>
 
+    <string name="newMessage">Nova mensagem!</string>
+    <string name="writemessage">Dígite sua mensagem aqui</string>
+    <string name="notmessage">Você não tem mensagens para serem exibidas</string>
+    <string name="userwrite">Usúario</string>
+
 </resources>
