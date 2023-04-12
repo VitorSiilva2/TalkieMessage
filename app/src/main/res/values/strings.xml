@@ -9,17 +9,24 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="welcome">Olá, %s !</string>
+    <string name="welcome">Olá,</string>
+    <string name="welcome_login">Bem-Vindo ao TalkieMessage</string>
+    <string name="description_login">Envie ou receba mensagens</string>
+
     <string name="send">Enviar</string>
     <string name="enter">Entrar</string>
     <string name="confirmReading">Confirma leitura</string>
-    <string name="register">Cadastrar</string>
+    <string name="register">Cadastro</string>
     <string name="name">Nome</string>
-    <string name="singout">Sair</string>
+    <string name="sing_out">Sair</string>
 
     <string name="newMessage">Nova mensagem!</string>
     <string name="writemessage">Dígite sua mensagem aqui</string>
     <string name="notmessage">Você não tem mensagens para serem exibidas</string>
     <string name="userwrite">Usúario</string>
+    <string name="email">E-mail</string>
+    <string name="admin">"É administrador? "</string>
+    <string name="invalid_email">E-mail Invalido!</string>
+    <string name="invalid_password">Senha Invalida</string>
 
 </resources>

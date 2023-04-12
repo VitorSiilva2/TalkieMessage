@@ -4,6 +4,7 @@
     package="com.example.talkiemessage">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.android.permission.SYSTEM_ALERT_WINDOW" />
@@ -25,12 +26,12 @@
             android:name=".ClientScreen"
             android:exported="false" />
         <activity
-            android:name=".AdminScreen"
+            android:name=".admin.view.AdminScreen"
             android:exported="false"
             android:label="@string/title_activity_admin_screen"
             android:theme="@style/Theme.TalkieMessage.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".login.view.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

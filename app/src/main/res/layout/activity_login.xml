@@ -4,96 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical">
+    tools:context=".login.view.LoginActivity"
+    android:background="@color/color_standard_background">
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/email_message_messagesent_icon"
-        app:layout_constraintBottom_toTopOf="@+id/linear_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8">
-
-    </ImageView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linear_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.7"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo_talkie_message"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/welcome_text">
 
-        <EditText
-            android:id="@+id/login_edit_input"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="16dp"
-            android:hint="@string/user"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_background">
+    </ImageView>
 
-        </EditText>
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:text="@string/welcome_login">
+    </TextView>
+
+    <TextView
+        android:id="@+id/description_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description_login"
+        android:layout_gravity="center"
+        android:paddingBottom="25dp">
+
+    </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_edit_name_input"
+            style="@style/Theme.TalkieMessage.FormEditTextInput"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_edit_name"
+                style="@style/Theme.TalkieMessage.FormEditText"
+                android:autofillHints="@null"
+                android:hint="@string/name"
+                android:inputType="textEmailAddress"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <EditText
-            android:id="@+id/password_edit_input"
-            android:layout_width="match_parent"
-            android:padding="16dp"
-            android:hint="@string/password"
-            android:layout_height="60dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="24dp"
-            android:inputType="textPassword"
-            android:background="@drawable/edit_text_background">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/login_edit_password_input"
+            style="@style/Theme.TalkieMessage.FormEditTextInput"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_edit_password"
+                style="@style/Theme.TalkieMessage.FormEditText"
+                android:autofillHints="@null"
+                android:hint="@string/password"
+                android:inputType="textPassword"/>
 
-        </EditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/login_btn_enter"
             android:text="@string/enter"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginStart="36dp"
-            android:backgroundTint="@color/blue_standard"
-            android:layout_marginEnd="36dp">
+            style="@style/Theme.TalkieMessage.MessageButton"
+            android:enabled="true">
 
         </Button>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="OU"
-            android:gravity="center"
-            android:layout_marginTop="16dp">
-
-        </TextView>
-
-        <TextView
-            android:id="@+id/register_text_enter"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cadastre-se"
-            android:gravity="center"
-            android:textSize="20sp">
-
-        </TextView>
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

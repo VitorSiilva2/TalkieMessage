@@ -4,32 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminScreen"
-    android:orientation="vertical">
+    tools:context=".admin.view.AdminScreen"
+    android:orientation="vertical"
+    android:background="@color/color_standard_background">
 
-    <TextView
-        android:id="@+id/welcome_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:layout_marginTop="80dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/welcome">
-
-    </TextView>
+        <include
+            android:id="@+id/main_toolbar"
+            layout="@layout/toolbar_main" />
 
     <Button
         android:id="@+id/singin_btn_logoff"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="150dp"
-        android:backgroundTint="@color/blue_standard"
-        android:text="@string/singout"
+        style="@style/Theme.TalkieMessage.SingOut"
+        android:text="@string/sing_out"
         android:textColor="@color/white">
 
     </Button>
@@ -41,9 +27,9 @@
         android:layout_height="200dp"
         android:textSize="20sp"
         android:layout_marginTop="50dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="36dp"
         android:hint="@string/writemessage"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/edit_text_background"
         android:autofillHints="true"
         tools:ignore="TextFields">
@@ -57,8 +43,8 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:layout_marginTop="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/edit_text_background"
         android:inputType="textAutoComplete"
         android:hint="@string/userwrite"
@@ -68,16 +54,10 @@
 
     <Button
         android:id="@+id/send_btn_person"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/blue_standard"
+        style="@style/Theme.TalkieMessage.MessageButton"
+        android:backgroundTint="@color/color_components"
         android:text="@string/send"
         android:textColor="@color/white">
 
     </Button>
-
-
 </LinearLayout>

@@ -4,91 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:orientation="vertical">
+    tools:context=".login.view.LoginActivity"
+    android:orientation="vertical"
+    android:background="@color/color_standard_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linear_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
-        <EditText
-            android:id="@+id/name_edit_input_register"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="16dp"
-            android:hint="@string/register"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_background">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_edit_name_input"
+            style="@style/Theme.TalkieMessage.FormEditTextInput"
+            app:hintEnabled="false">
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_edit_name"
+                style="@style/Theme.TalkieMessage.FormEditText"
+                android:autofillHints="@null"
+                android:hint="@string/name"
+                android:inputType="textEmailAddress" />
 
-
-        <EditText
-            android:id="@+id/nickname_edit_input_register"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="16dp"
-            android:hint="@string/user"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_background">
-        </EditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_edit_email_input"
+            style="@style/Theme.TalkieMessage.FormEditTextInput"
+            app:hintEnabled="false">
 
-        <EditText
-            android:id="@+id/password_edit_input_register"
-            android:layout_width="match_parent"
-            android:padding="16dp"
-            android:hint="@string/password"
-            android:layout_height="60dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="24dp"
-            android:inputType="textPassword"
-            android:background="@drawable/edit_text_background">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_edit_email"
+                style="@style/Theme.TalkieMessage.FormEditText"
+                android:autofillHints="@null"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
 
-        </EditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_edit_password_input"
+            style="@style/Theme.TalkieMessage.FormEditTextInput"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_edit_password"
+                style="@style/Theme.TalkieMessage.FormEditText"
+                android:autofillHints="@null"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Switch
             android:id="@+id/isadmin_validation"
             android:layout_width="match_parent"
-            android:padding="16dp"
-            android:hint="admin"
             android:layout_height="60dp"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
             android:layout_marginBottom="24dp"
-            android:background="@drawable/edit_text_background">
+            android:background="@drawable/edit_text_background"
+            android:padding="16dp"
+            android:text="@string/admin"
+            tools:ignore="UseSwitchCompatOrMaterialXml">
 
-        </EditText>
+        </Switch>
 
         <Button
             android:id="@+id/register_btn_enter"
-            android:text="@string/register"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="36dp"
-            android:backgroundTint="@color/blue_standard"
-            android:layout_marginEnd="36dp">
+            android:layout_marginEnd="36dp"
+            android:backgroundTint="@color/color_components"
+            android:text="@string/register">
 
         </Button>
 
 
-
     </androidx.appcompat.widget.LinearLayoutCompat>
-
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,16 @@
-package com.example.talkiemessage
+package com.example.talkiemessage.admin.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
+import com.example.talkiemessage.login.view.LoginActivity
+import com.example.talkiemessage.R
+import com.example.talkiemessage.RegisterActivity
 import com.example.talkiemessage.databinding.ActivityAdminScreenBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -22,13 +28,23 @@ class AdminScreen : AppCompatActivity() {
         binding = ActivityAdminScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(findViewById(R.id.main_toolbar))
+
         if (uid != null) {
             val userRef = db.collection("users").document(uid)
             userRef.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         val name = document.data?.get("name") as String?
-                        binding.welcomeText.text = "Welcome, $name"
+                        val nameParts = name?.split(" ")
+                        val firstName = nameParts?.get(0)?.capitalize()
+                        val secondName = nameParts?.get(1)
+                        val string = getString(R.string.welcome)
+
+                        findViewById<TextView>(R.id.welcome_name).text = buildString {
+                            append(string)
+                            append(" $firstName")
+                        }
                     } else {
                         Log.d("AdminScreen", "Documento não encontrado")
                     }
@@ -84,6 +100,22 @@ class AdminScreen : AppCompatActivity() {
             FirebaseAuth.getInstance().signOut()
             val backToLogin = Intent(this, LoginActivity::class.java)
             startActivity(backToLogin)
+        }
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_register -> {
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
+
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 }

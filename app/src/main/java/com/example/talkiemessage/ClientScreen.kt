@@ -8,9 +8,12 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import com.example.talkiemessage.R.string.welcome
 import com.example.talkiemessage.databinding.ActivityClientScreenBinding
+import com.example.talkiemessage.login.view.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
@@ -32,6 +35,7 @@ class ClientScreen : AppCompatActivity() {
         binding = ActivityClientScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(findViewById(R.id.main_toolbar))
 
         val currentUser = FirebaseAuth.getInstance().currentUser
         val uid = currentUser?.uid
@@ -43,7 +47,15 @@ class ClientScreen : AppCompatActivity() {
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         val name = document.data?.get("name") as String?
-                        binding.welcomeText.text = name
+                        val nameParts = name?.split(" ")
+                        val firstName = nameParts?.get(0)?.capitalize()
+                        val secondName = nameParts?.getOrNull(1)
+                        val string = getString(welcome)
+
+                        findViewById<TextView>(R.id.welcome_name).text = buildString {
+        append(string)
+        append(" $firstName")
+    }
                     } else {
                         Log.d(TAG, "Documento não encontrado")
                     }
@@ -113,7 +125,7 @@ class ClientScreen : AppCompatActivity() {
             val notification = NotificationCompat.Builder(this, "my_channel_id")
                 .setContentTitle("Nova mensagem! ")
                 .setContentText(lastMessage.message)
-                .setSmallIcon(R.drawable.email_message_messagesent_icon)
+                .setSmallIcon(R.drawable.logo_talkie_message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true)
                 .build()
