@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.TalkieMessage.FormEditTextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_marginStart">36dp</item>
+    <item name="android:layout_marginEnd">36dp</item>
+    <item name="android:layout_marginBottom">20dp</item>
+    </style>
+
+    <style name="Theme.TalkieMessage.FormEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+
+    </style>
+
+
+    <style name="Theme.TalkieMessage.MessageTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:layout_marginTop">100dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginStart">36dp</item>
+        <item name="android:layout_marginEnd">36dp</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+
+    </style>
+
+    <style name="Theme.TalkieMessage.MessageButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:backgroundTint">@color/color_components</item>
+        <item name="android:layout_marginStart">36dp</item>
+        <item name="android:layout_marginEnd">36dp</item>
+    </style>
+
+    <style name="Theme.TalkieMessage.SingOut">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:backgroundTint">@color/color_components</item>
+        <item name="android:layout_marginStart">150dp</item>
+        <item name="android:layout_marginEnd">150dp</item>
+        <item name="android:layout_marginTop">40dp</item>
+
+    </style>
+
+
+</resources>
