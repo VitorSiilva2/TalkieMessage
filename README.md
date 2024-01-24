@@ -9,4 +9,4 @@ Imagens do Projeto em rodando em teste:
 <img src="https://github.com/VitorSiilva2/TalkieMessage/assets/116734585/90e80085-78de-4e95-b529-97cc34f16b6e" width=300px /></div>
 
 
-Projeto desenvolvido na linguagem Kotlin para android utilizando firebase como banco de dados NOSQL e o Firebase Authentication como pricipal recurso para login de usuarios.
+Projeto desenvolvido na linguagem Kotlin para android utilizando firebase como banco de dados NOSQL e o Firebase Authentication como principal recurso para login de usuarios.
