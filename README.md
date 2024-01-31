@@ -1,4 +1,4 @@
-Imagens do Projeto em rodando em teste:
+Imagens do Projeto rodando em teste:
 
 
 <img src="https://github.com/VitorSiilva2/TalkieMessage/assets/116734585/90905954-d154-4359-ae2b-02c3baa7cb10" width=300px /></div>
